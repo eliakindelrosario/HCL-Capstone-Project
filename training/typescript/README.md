@@ -5,11 +5,11 @@ TypeScript is a strongly typed superset programming language built on javascript
 Special Notes:
 
 -   TypeScript requires translation to javascript using its transpiler (`tsc`)
--   Class _ Accessor _ are only available when targeting ** ECMAScript 5 ** and higher
+-   Class _Accessor_ are only available when targeting **ECMAScript 5** and higher
 
 ## Commands
 
-![TypeScript CLI DOC](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
+[TypeScript CLI DOC](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
 | Commands | Description |
 | ---------------------- | ---------------------------------------------------------------------------------------- |
 | `tsc filename.ts` | transpile to js |
