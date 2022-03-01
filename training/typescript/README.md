@@ -9,8 +9,11 @@ Special Notes:
 
 ## Commands
 
-| Commands               | Description          |
-| ---------------------- | -------------------- |
-| `tsc filename.ts`      | transpile to js      |
-| `node filename`        | execute js file      |
+![TypeScript CLI DOC](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
+| Commands | Description |
+| ---------------------- | ---------------------------------------------------------------------------------------- |
+| `tsc filename.ts` | transpile to js |
+| `node filename` | execute js file |
 | `tsc -t es5 script.ts` | invoke transpiler v5 |
+| `tsc --build --clean` | Build one or more projects and their dependencies and Delete the outputs of all projects |
+| `tsc --init` | auto generate tsconfig.json |
