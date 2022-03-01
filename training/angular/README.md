@@ -23,10 +23,10 @@ Angular is an application design framework and development platform for creating
 
 ## Notes
 
-`{{ p.class_property }}` - Access class property value in html template
-`{{ p.class_property | currency: "USD" }}` - Format numeric class property to currency
-`*ngIf` - Conditional directive
-`<ng-template #conditional_directive_else_block_name>Value</ng-template>` - Else value for Conditional directive
-`*ngFor` - Looping directive
+-   `{{ p.class_property }}` - Access class property value in html template
+-   `{{ p.class_property | currency: "USD" }}` - Format numeric class property to currency
+-   `*ngIf` - Conditional directive
+-   `<ng-template #conditional_directive_else_block_name>Value</ng-template>` - Else value for Conditional directive
+-   `*ngFor` - Looping directive
 
 [NG DIRECTIVES](https://angular.io/api/common#directives)
