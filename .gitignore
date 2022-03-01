@@ -13,6 +13,9 @@ bower_components/
 .idea/
 
 # misc
+/.angular/cache
+.editorconfig
+.browserslistrc
 .sass-cache/
 connect.lock/
 coverage/
