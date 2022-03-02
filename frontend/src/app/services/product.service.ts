@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs'; // rxjs - Reactive Javascript
 import { map } from 'rxjs/operators';
 import { Product } from '../common/product';
+import { ProductCategory } from '../common/product-category';
 
 @Injectable({
   providedIn: 'root',
@@ -12,14 +13,21 @@ export class ProductService {
   // size=100 forces srpingboot to return 100 records
   // private baseUrl = 'http://localhost:8080/api/products?size=100';
   private baseUrl = 'http://localhost:8080/api/products';
+  private categoryUrl = 'http://localhost:8080/api/product-category';
 
   constructor(private http: HttpClient) {}
 
   getProductList(catagoryId: number): Observable<Product[]> {
     const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${catagoryId}`;
     return this.http
-      .get<GetResponse>(searchUrl)
+      .get<GetResponseProducts>(searchUrl)
       .pipe(map((response) => response._embedded.products));
+  }
+
+  getProductCategories(): Observable<ProductCategory[]> {
+    return this.http
+      .get<GetResponseProductCategory>(this.categoryUrl)
+      .pipe(map((response) => response._embedded.productCategory));
   }
 
   // Deprecated method
@@ -30,8 +38,15 @@ export class ProductService {
   // }
 }
 
-interface GetResponse {
+// Rename from [GetResponse] to [GetResponseProduct]
+interface GetResponseProducts {
   _embedded: {
     products: Product[];
+  };
+}
+
+interface GetResponseProductCategory {
+  _embedded: {
+    productCategory: ProductCategory[];
   };
 }
