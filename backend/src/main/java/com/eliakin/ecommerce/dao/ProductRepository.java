@@ -14,4 +14,6 @@ import com.eliakin.ecommerce.entity.Product;
 public interface ProductRepository extends JpaRepository<Product, Long> {
 	// Query Method
 	Page<Product> findByCategoryId(@RequestParam("id") Long id, Pageable pages);
+	
+	Page<Product> findByNameContaining(@RequestParam("name") String name, Pageable pages);
 }

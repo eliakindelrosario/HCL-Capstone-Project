@@ -30,6 +30,13 @@ export class ProductService {
       .pipe(map((response) => response._embedded.productCategory));
   }
 
+  searchProducts(keyword: string): Observable<Product[]> {
+    const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${keyword}`;
+    return this.http
+      .get<GetResponseProducts>(searchUrl)
+      .pipe(map((response) => response._embedded.products));
+  }
+
   // Deprecated method
   // getProductList(): Observable<Product[]> {
   //   return this.http
