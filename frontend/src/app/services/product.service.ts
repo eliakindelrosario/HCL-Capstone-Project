@@ -8,7 +8,9 @@ import { Product } from '../common/product';
   providedIn: 'root',
 })
 export class ProductService {
-  private baseUrl = 'http://localhost:8080/api/products';
+  // By default, springboot only returns 20 records
+  // size=100 forces srpingboot to return 100 records
+  private baseUrl = 'http://localhost:8080/api/products?size=100';
 
   constructor(private http: HttpClient) {}
 
