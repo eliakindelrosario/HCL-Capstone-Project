@@ -91,7 +91,7 @@ h6 {
 }
 
 a {
-  display: inline-block;
+  /* display: inline-block; */
   text-decoration: none !important;
 }
 
@@ -543,6 +543,8 @@ input.au-input.au-input-xl {
 
 .product-box img {
   width: 150px;
+  margin: 0 auto;
+  /* width: 100%; */
 }
 
 .items select {
@@ -555,7 +557,7 @@ input.au-input.au-input-xl {
   margin-left: 5px;
 }
 .product-box {
-  margin-bottom: 60px;
+  /* margin-bottom: 60px; */
 }
 .price {
   margin: 15px 0 0;
@@ -1051,4 +1053,10 @@ footer ul li {
     border: 0;
     padding: 8px 0;
   }
+}
+
+/* ADD ONS */
+.card {
+  margin: 10px 0;
+  padding: 25px;
 }
