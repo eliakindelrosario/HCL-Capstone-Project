@@ -9,9 +9,16 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
-  products: Product[];
-  currentCatagoryId: number;
-  searchMode: boolean;
+  products: Product[] = [];
+  currentCategoryId: number = 1;
+  previousCategoryId: number = 1;
+  searchMode: boolean = false;
+
+  pageNumber: number = 1;
+  pageSize: number = 5;
+  totalElements: number = 0;
+
+  previousKeyword: string = null;
 
   constructor(
     private productService: ProductService,
@@ -34,27 +41,64 @@ export class ProductListComponent implements OnInit {
     }
   }
 
+  handleSearchProducts() {
+    const keyword = this.route.snapshot.paramMap.get('keyword');
+
+    if (this.previousKeyword != keyword) {
+      this.pageNumber = 1;
+    }
+
+    this.previousKeyword = keyword;
+    console.log(`keyword=${keyword}, thePageNumber=${this.pageNumber}`);
+
+    this.productService
+      .searchProductsPaginate(this.pageNumber - 1, this.pageSize, keyword)
+      .subscribe(this.processResult());
+  }
+
   handleListProducts() {
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
 
     if (hasCategoryId) {
-      this.currentCatagoryId = +this.route.snapshot.paramMap.get('id');
+      this.currentCategoryId = +this.route.snapshot.paramMap.get('id');
     } else {
-      this.currentCatagoryId = 1; // Default catagory
+      this.currentCategoryId = 1; // Default catagory
     }
 
-    console.log(this.currentCatagoryId);
+    if (this.previousCategoryId != this.currentCategoryId) {
+      this.pageNumber = 1;
+    }
+
+    this.previousCategoryId = this.currentCategoryId;
+
+    // Debug
+    console.log(
+      `currentCategoryId=${this.currentCategoryId}, PageNumber=${this.pageNumber}`
+    );
 
     this.productService
-      .getProductList(this.currentCatagoryId)
-      .subscribe((data) => (this.products = data));
+      .getProductListPaginate(
+        this.pageNumber - 1,
+        this.pageSize,
+        this.currentCategoryId
+      )
+      .subscribe(this.processResult());
   }
 
-  handleSearchProducts() {
-    const keyword = this.route.snapshot.paramMap.get('keyword');
+  processResult() {
+    return (data) => {
+      this.products = data._embedded.products;
+      this.pageNumber = data.page.number + 1;
+      this.pageSize = data.page.size;
+      this.totalElements = data.page.totalElements;
+    };
+  }
 
-    this.productService.searchProducts(keyword).subscribe((data) => {
-      this.products = data;
-    });
+  updatePageSize(event: Event) {
+    // Fix
+    const userPageSize = +(event.target as HTMLTextAreaElement).value;
+    this.pageSize = userPageSize;
+    this.pageNumber = 1;
+    this.listProducts();
   }
 }

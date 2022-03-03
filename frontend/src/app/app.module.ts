@@ -10,6 +10,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
 import { SearchComponent } from './components/search/search.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 // Configure routing
 const routes: Routes = [
   { path: 'search/:keyword', component: ProductListComponent },
@@ -33,6 +36,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes), // setup routing
     BrowserModule,
     HttpClientModule, // Required to fetch data from database
+    NgbModule,
   ],
   providers: [ProductService], // Add service here to allow injection into other parts of the applications
   bootstrap: [AppComponent],
