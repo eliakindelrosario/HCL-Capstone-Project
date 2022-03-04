@@ -1,0 +1,9 @@
+.btn-remove {
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: #6e6e6e;
+}
+
+.btn-remove:hover {
+  color: #fc0303 !important;
+}
