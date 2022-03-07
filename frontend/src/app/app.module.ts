@@ -14,9 +14,12 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Configure routing
 const routes: Routes = [
+  { path: 'checkout', component: CheckoutComponent },
   { path: 'search/:keyword', component: ProductListComponent },
   { path: 'category/:id', component: ProductListComponent },
   { path: 'products/:id', component: ProductDetailsComponent },
@@ -36,12 +39,14 @@ const routes: Routes = [
     ProductDetailsComponent,
     CartStatusComponent,
     CartDetailsComponent,
+    CheckoutComponent,
   ],
   imports: [
     RouterModule.forRoot(routes), // setup routing
     BrowserModule,
     HttpClientModule, // Required to fetch data from database
     NgbModule,
+    ReactiveFormsModule, // Support for reactive forms
   ],
   providers: [ProductService], // Add service here to allow injection into other parts of the applications
   bootstrap: [AppComponent],
