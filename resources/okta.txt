@@ -1,0 +1,10 @@
+# Website 
+https://developer.okta.com/
+
+
+# Dependencies
+npm install @okta/okta-signin-widget  
+npm install @okta/okta-angular
+npm install @okta/okta-auth-js
+https://www.npmjs.com/package/@okta/okta-angular
+
