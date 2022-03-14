@@ -8,12 +8,20 @@
     </div>
 
     <div class="nav">
-      <button *ngIf="!isAuthenticated" routerLink="/login" class="security-btn">
+      <button
+        *ngIf="!isAuthenticated"
+        routerLink="/login"
+        class="security-btn mt-2"
+      >
         Login
       </button>
 
-      <button *ngIf="isAuthenticated" (click)="logout()" class="security-btn">
-        Logout
+      <button
+        routerLink="/order-history"
+        *ngIf="isAuthenticated"
+        class="security-btn mt-2"
+      >
+        Orders
       </button>
 
       <button
@@ -22,6 +30,14 @@
         class="security-btn mt-2"
       >
         Members
+      </button>
+
+      <button
+        *ngIf="isAuthenticated"
+        (click)="logout()"
+        class="security-btn mt-2"
+      >
+        Logout
       </button>
     </div>
     <!-- <div *ngIf="isAuthenticated && userFullName" class="login-status-user-info">
