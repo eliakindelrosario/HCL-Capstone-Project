@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.metamodel.EntityType;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
@@ -23,6 +24,9 @@ import com.eliakin.ecommerce.entity.State;
 @Configuration
 public class MyDataRestConfig implements RepositoryRestConfigurer {
 
+	@Value("${allowed.origins}")
+    private String[] theAllowedOrigins;
+	
 	private EntityManager entityManager;
 
 	@Autowired
@@ -51,7 +55,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 		exposeIds(config);
 		
 		// configure cors mapping - no longer need to specify @CrossOrigin on each repository
-        cors.addMapping(config.getBasePath() + "/**").allowedOrigins("http://localhost:4200");
+        cors.addMapping(config.getBasePath() + "/**").allowedOrigins(theAllowedOrigins);
 	}
 	
 	// Reusable Disable Http Method
