@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import com.eliakin.ecommerce.entity.Country;
+import com.eliakin.ecommerce.entity.Order;
 import com.eliakin.ecommerce.entity.Product;
 import com.eliakin.ecommerce.entity.ProductCategory;
 import com.eliakin.ecommerce.entity.State;
@@ -25,8 +26,8 @@ import com.eliakin.ecommerce.entity.State;
 public class MyDataRestConfig implements RepositoryRestConfigurer {
 
 	@Value("${allowed.origins}")
-    private String[] theAllowedOrigins;
-	
+	private String[] theAllowedOrigins;
+
 	private EntityManager entityManager;
 
 	@Autowired
@@ -41,25 +42,30 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 
 		// disable HTTP methods for Product: PUT, POST, DELETE and PATCH
 		dissableHttpMethods(Product.class, config, theUnsupportedActions);
-		
+
 		// disable HTTP methods for ProductCategory: PUT, POST, DELETE and PATCH
 		dissableHttpMethods(ProductCategory.class, config, theUnsupportedActions);
-		
+
 		// disable HTTP methods for Country: PUT, POST, DELETE and PATCH
 		dissableHttpMethods(Country.class, config, theUnsupportedActions);
-		
+
 		// disable HTTP methods for State: PUT, POST, DELETE and PATCH
 		dissableHttpMethods(State.class, config, theUnsupportedActions);
 
+		// disable HTTP methods for State: PUT, POST, DELETE and PATCH
+		dissableHttpMethods(Order.class, config, theUnsupportedActions);
+
 		// call internal helper method
 		exposeIds(config);
-		
-		// configure cors mapping - no longer need to specify @CrossOrigin on each repository
-        cors.addMapping(config.getBasePath() + "/**").allowedOrigins(theAllowedOrigins);
+
+		// configure cors mapping - no longer need to specify @CrossOrigin on each
+		// repository
+		cors.addMapping(config.getBasePath() + "/**").allowedOrigins(theAllowedOrigins);
 	}
-	
+
 	// Reusable Disable Http Method
-	private void dissableHttpMethods(Class objectClass ,RepositoryRestConfiguration config, HttpMethod[] theUnsupportedActions) {
+	private void dissableHttpMethods(Class objectClass, RepositoryRestConfiguration config,
+			HttpMethod[] theUnsupportedActions) {
 		config.getExposureConfiguration().forDomainType(objectClass)
 				.withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
 				.withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
