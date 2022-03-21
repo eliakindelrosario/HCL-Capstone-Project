@@ -4,8 +4,8 @@ import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-cart-details',
-  templateUrl: './cart-details.component.html',
-  styleUrls: ['./cart-details.component.css'],
+  templateUrl: './cart-details.component-eliakin.html',
+  styleUrls: ['./cart-details.component-eliakin.css'],
 })
 export class CartDetailsComponent implements OnInit {
   cartItems: CartItem[] = [];

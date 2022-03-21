@@ -811,16 +811,19 @@ footer ul li {
     min-width: 290px;
   }
 }
+
 @media (max-width: 1315px) and (min-width: 992px) {
   .header-desktop3 .section-content {
     padding: 0 15px;
   }
 }
+
 @media (max-width: 1570px) and (min-width: 992px) {
   .header-navbar ul li a {
     padding: 25px 15px;
   }
 }
+
 @media (max-width: 1315px) and (min-width: 992px) {
   .header-navbar ul li a {
     font-size: 13px;
@@ -887,12 +890,14 @@ footer ul li {
   .logo {
     text-align: center;
   }
+
   .header-desktop {
     position: relative;
     top: 0;
     left: 0;
     height: 80px;
   }
+
   .header-wrap {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -902,6 +907,7 @@ footer ul li {
     -ms-flex-direction: column;
     flex-direction: column;
   }
+
   .header-button {
     margin-top: 30px;
     width: 100%;
@@ -911,6 +917,7 @@ footer ul li {
     -ms-flex-pack: justify;
     justify-content: space-between;
   }
+
   .menu-sidebar2 {
     top: 0;
     right: -300px;
@@ -919,19 +926,24 @@ footer ul li {
     -moz-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
   }
+
   .header-desktop2 {
     left: 0;
     position: relative;
   }
+
   .header-desktop4 {
     position: static;
   }
+
   .section-content.section-content-p30.e-spc {
     padding-top: 100px;
   }
+
   header.header-desktop.extra {
     top: 93px !important;
   }
+
   .cart-area i {
     font-size: 22px;
     float: left;

@@ -4,8 +4,8 @@ import { OrderHistoryService } from 'src/app/services/order-history.service';
 
 @Component({
   selector: 'app-order-history',
-  templateUrl: './order-history.component.html',
-  styleUrls: ['./order-history.component.css'],
+  templateUrl: './order-history.component-eliakin.html',
+  styleUrls: ['./order-history.component-eliakin.css'],
 })
 export class OrderHistoryComponent implements OnInit {
   orderHistoryList: OrderHistory[] = [];

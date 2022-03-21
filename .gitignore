@@ -713,3 +713,11 @@ MigrationBackup/
 #### PERSONAL ADD-ONS ####
 # Ignore transpiled typscript
 /training/typescript/*/*.js
+
+
+
+
+############
+
+application.properties
+fronted/config 
