@@ -8,21 +8,19 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
 
-        // protect endpoint /api/orders
-        http.authorizeRequests()
-                .antMatchers("/api/orders/**")
-                .authenticated()
-                .and()
-                .oauth2ResourceServer()
-                .jwt();
+		// protect endpoint /api/orders
+		http.authorizeRequests().antMatchers("/api/orders/**").authenticated().and().oauth2ResourceServer().jwt();
 
-        // add CORS filters
-        http.cors();
+		// add CORS filters
+		http.cors();
 
-        // force a non-empty response body for 401's to make the response more friendly
-        Okta.configureResourceServer401ResponseBody(http);
-    }
+		// force a non-empty response body for 401's to make the response more friendly
+		Okta.configureResourceServer401ResponseBody(http);
+
+		// disable CSRF since we are not using Cookies for session tracking
+		http.csrf().disable();
+	}
 }

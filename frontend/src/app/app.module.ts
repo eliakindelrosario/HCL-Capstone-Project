@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'; // Required
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; // Required
 
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
@@ -31,6 +31,7 @@ import {
 import myAppConfig from './config/my-app-config';
 import { MembersPageComponent } from './components/members-page/members-page.component';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 const oktaConfig = Object.assign(
   {
@@ -96,7 +97,15 @@ const routes: Routes = [
     ReactiveFormsModule, // Support for reactive forms
     OktaAuthModule,
   ],
-  providers: [ProductService, { provide: OKTA_CONFIG, useValue: { oktaAuth } }], // Add service here to allow injection into other parts of the applications
+  providers: [
+    ProductService,
+    { provide: OKTA_CONFIG, useValue: { oktaAuth } }, // Add service here to allow injection into other parts of the applications
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
