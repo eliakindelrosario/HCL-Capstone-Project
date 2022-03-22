@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs'; // rxjs - Reactive Javascript
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Product } from '../common/product';
 import { ProductCategory } from '../common/product-category';
 
@@ -12,8 +13,8 @@ export class ProductService {
   // By default, springboot only returns 20 records
   // size=100 forces srpingboot to return 100 records
   // private baseUrl = 'http://localhost:8080/api/products?size=100';
-  private baseUrl = 'http://localhost:8080/api/products';
-  private categoryUrl = 'http://localhost:8080/api/product-category';
+  private baseUrl = environment.luv2ShopApiUrl + '/products';
+  private categoryUrl = environment.luv2ShopApiUrl + '/product-category';
 
   constructor(private http: HttpClient) {}
 
