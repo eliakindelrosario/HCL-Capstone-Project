@@ -5,6 +5,8 @@
 export const environment = {
   production: false,
   luv2ShopApiUrl: 'https://localhost:9898/api',
+  stripePublishableKey:
+    'pk_test_51KgBSNGV1j4Hc7OZBTV4Rx4W7GnQqOopUxYg8B1twCndBvQHwNyzWEhEvmHsvwnkJpkqEhqOt8FvKLmFRXpE3dLG00gCi6PAle',
 };
 
 /*
